@@ -11,4 +11,4 @@ The piglow.py library has been borrowed from https://github.com/Boeeerb/PiGlow a
 
 You will need ncurses installed to use the interface, however, if you have cgminer installed you already have ncurses.
 
-API Key and Secret can be obtained from https://btc-e.com
+API Key and Secret can be obtained from https://btc-e.com They are only needed if you intend to add the ability to buy and sell coin from this ticker. Which is obviously not implemented yet. So, pretty safe to leave out.
