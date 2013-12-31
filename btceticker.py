@@ -13,8 +13,8 @@ stdscr = curses.initscr()
 curses.cbreak()
 stdscr.keypad(1)
 
-BTC_api_key = "QDHZXU4V-Y95RKD35-Q8337RC4-298CF22P-H89ZMXIN"
-BTC_api_secret = "65093036de4333a497dbecc698297ec1bb0c3b71740a5a5150d7959e30e5d703"
+BTC_api_key = "Your Key"
+BTC_api_secret = "Your Secret"
 
 piglow = PiGlow()
 
