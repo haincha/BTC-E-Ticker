@@ -25,11 +25,11 @@ color = ["white", "blue", "green", "yellow", "orange", "red"]
 class CgminerClient: 
     def command(self, host, port, command):
 	# sockets are one time use. open one for each command
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
  
         try:
             # connect to the given host and port
-            sock.connect((host, port))
+            sock.connect(('localhost', 4028))
  
             # json encode and send the command
             self._send(sock, json.dumps({"command": "devs"}))
@@ -68,17 +68,25 @@ if __name__ == "__main__":
 
 	try:
 	
-		stdscr.addstr(0,8," ____ _____ ____        _____   _____ _  ____ _  __ _____ ____")
-		stdscr.addstr(1,8,"/  __Y__ __Y   _\\      /  __/  /__ __Y \\/   _Y |/ //  __//  __\\")
-		stdscr.addstr(2,8,"| | // / \\ |  /  _____ |  \\      / \\ | ||  / |   / |  \\  |  \\/|")
-		stdscr.addstr(3,8,"| |_\\\\ | | |  \\__\\____\\|  /_     | | | ||  \\_|   \\ |  /_ |    /")
-		stdscr.addstr(4,8,"\\____/ \\_/ \\____/      \\____\\    \\_/ \\_/\\____|_|\\_\\\\____\\\\_/\\_\\")
+		stdscr.addstr(0,10," ____ _____ ____        _____   _____ _  ____ _  __ _____ ____")
+		stdscr.addstr(1,10,"/  __Y__ __Y   _\\      /  __/  /__ __Y \\/   _Y |/ //  __//  __\\")
+		stdscr.addstr(2,10,"| | // / \\ |  /  _____ |  \\      / \\ | ||  / |   / |  \\  |  \\/|")
+		stdscr.addstr(3,10,"| |_\\\\ | | |  \\__\\____\\|  /_     | | | ||  \\_|   \\ |  /_ |    /")
+		stdscr.addstr(4,10,"\\____/ \\_/ \\____/      \\____\\    \\_/ \\_/\\____|_|\\_\\\\____\\\\_/\\_\\")
 		
-		stdscr.addstr(5,7,"-----------------------------------------------------------------")
-		stdscr.addstr(6,7,"|        Buy        |       Sell        |        Hashing        |")
-		stdscr.addstr(7,7,"-----------------------------------------------------------------")
-		stdscr.addstr(8,7,"|     $             |    $              |                       |")
-		stdscr.addstr(9,7,"-----------------------------------------------------------------")
+		stdscr.addstr(5,9,"-----------------------------------------------------------------")
+		stdscr.addstr(6,9,"|        Buy        |       Sell        |        Hashing        |")
+		stdscr.addstr(7,9,"-----------------------------------------------------------------")
+		stdscr.addstr(8,9,"|     $             |    $              |                       |")
+		stdscr.addstr(9,9,"-----------------------------------------------------------------")
+		stdscr.addstr(10,9,"|     $             |    $              |")
+		stdscr.addstr(11,9,"-----------------------------------------")
+		stdscr.addstr(7,3,"------")
+		stdscr.addstr(8,3,"| BTC")
+		stdscr.addstr(9,3,"------")
+		stdscr.addstr(10,3,"| LTC")
+		stdscr.addstr(11,3,"------")
+		
 		while True:
 			# Run your code here
 			client = CgminerClient()
@@ -96,10 +104,10 @@ if __name__ == "__main__":
 			
 			hash_pad = len(str(float(list["DEVS"][0]["MHS 5s"]) / 1000))
 			
-			stdscr.addstr(8,54+hash_pad,"       ")
-			stdscr.addstr(8,55+hash_pad,"GHz")
+			stdscr.addstr(8,56+hash_pad,"       ")
+			stdscr.addstr(8,57+hash_pad,"GHz")
 			
-			stdscr.addstr(8,54,str(float(list["DEVS"][0]["MHS 5s"]) / 1000))
+			stdscr.addstr(8,56,str(float(list["DEVS"][0]["MHS 5s"]) / 1000))
 			
 			buypad = len(str(btcejson["ticker"]["buy"]))
 			sellpad = len(str(btcejson["ticker"]["sell"]))
@@ -108,44 +116,44 @@ if __name__ == "__main__":
 			ltcbuypad = len(str(ltcjson["ticker"]["buy"]))
 			ltcsellpad = len(str(ltcjson["ticker"]["sell"]))
 
-			stdscr.addstr(8,15+buypad,"     ")
-			stdscr.addstr(8,34+sellpad,"     ")
+			stdscr.addstr(8,17+buypad,"     ")
+			stdscr.addstr(8,36+sellpad,"     ")
 			
-			stdscr.addstr(8,15,str(btcejson["ticker"]["buy"]))
-			stdscr.addstr(8,34,str(btcejson["ticker"]["sell"]))
-			stdscr.addstr(12,15,str(ltcjson["ticker"]["buy"]))
-			stdscr.addstr(12,34,str(ltcjson["ticker"]["sell"]))
+			stdscr.addstr(8,17,str(btcejson["ticker"]["buy"]))
+			stdscr.addstr(8,36,str(btcejson["ticker"]["sell"]))
+			stdscr.addstr(10,17,str(ltcjson["ticker"]["buy"]))
+			stdscr.addstr(10,36,str(ltcjson["ticker"]["sell"]))
 			stdscr.refresh()
 			
-			if float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 6.1 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 6.2:
+			if float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 7.7 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 7.8:
 				piglow.colour(color[0],10)
 				piglow.colour(color[1],0)
 				piglow.colour(color[2],0)
 				piglow.colour(color[3],0)
 				piglow.colour(color[4],0)
 				piglow.colour(color[5],0)
-			elif float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 6.2 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 6.3:
+			elif float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 7.8 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 7.9:
 				piglow.colour(color[0],10)
 				piglow.colour(color[1],10)
 				piglow.colour(color[2],0)
 				piglow.colour(color[3],0)
 				piglow.colour(color[4],0)
 				piglow.colour(color[5],0)
-			elif float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 6.3 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 6.4:
+			elif float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 7.9 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 8.0:
 				piglow.colour(color[0],10)
 				piglow.colour(color[1],10)
 				piglow.colour(color[2],10)
 				piglow.colour(color[3],0)
 				piglow.colour(color[4],0)
 				piglow.colour(color[5],0)
-			elif float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 6.4 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 6.5:
+			elif float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 8.0 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 8.1:
 				piglow.colour(color[0],10)
 				piglow.colour(color[1],10)
 				piglow.colour(color[2],10)
 				piglow.colour(color[3],10)
 				piglow.colour(color[4],0)
 				piglow.colour(color[5],0)
-			elif float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 6.5 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 6.6:
+			elif float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 8.1 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 8.2:
 				piglow.colour(color[0],10)
 				piglow.colour(color[1],10)
 				piglow.colour(color[2],10)
