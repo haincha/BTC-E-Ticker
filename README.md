@@ -16,4 +16,5 @@ API Key and Secret can be obtained from https://btc-e.com They are only needed i
 Make sure your conf file located at `/root/.cgminer/cgminer.conf` matches up with mine. This can be accomplished by issuing a `sudo nano /root/.cgminer/cgminer.conf` from your pi and making sure everything underneath the BTC address match up.
 
 BTC: 1LYUfBdFoc9LYZVB7eLP1hKnpFbqNtq5yV
+
 LTC: LdwQcED3LJHqa3UNqRs2ax1uDjBV5Cmm4Z
