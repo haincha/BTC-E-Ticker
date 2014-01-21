@@ -111,18 +111,22 @@ if __name__ == "__main__":
 			
 			buypad = len(str(btcejson["ticker"]["buy"]))
 			sellpad = len(str(btcejson["ticker"]["sell"]))
+			ltcbuypad = len(str(ltcjson["ticker"]["buy"]))
+			ltcsellpad = len(str(ltcjson["ticker"]["sell"]))
 			
 
 			ltcbuypad = len(str(ltcjson["ticker"]["buy"]))
 			ltcsellpad = len(str(ltcjson["ticker"]["sell"]))
 
-			stdscr.addstr(8,17+buypad,"     ")
-			stdscr.addstr(8,36+sellpad,"     ")
+			stdscr.addstr(8,16+buypad,"     ")
+			stdscr.addstr(8,35+sellpad,"     ")
+			stdscr.addstr(10,16+ltcbuypad,"    ")
+			stdscr.addstr(10,35+ltcsellpad,"    ")
 			
-			stdscr.addstr(8,17,str(btcejson["ticker"]["buy"]))
-			stdscr.addstr(8,36,str(btcejson["ticker"]["sell"]))
-			stdscr.addstr(10,17,str(ltcjson["ticker"]["buy"]))
-			stdscr.addstr(10,36,str(ltcjson["ticker"]["sell"]))
+			stdscr.addstr(8,16,str(btcejson["ticker"]["buy"]))
+			stdscr.addstr(8,35,str(btcejson["ticker"]["sell"]))
+			stdscr.addstr(10,16,str(ltcjson["ticker"]["buy"]))
+			stdscr.addstr(10,35,str(ltcjson["ticker"]["sell"]))
 			stdscr.refresh()
 			
 			if float(list["DEVS"][0]["MHS 5s"]) / 1000 >= 7.7 and float(list["DEVS"][0]["MHS 5s"]) / 1000 < 7.8:
